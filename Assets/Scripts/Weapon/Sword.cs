@@ -8,14 +8,17 @@ public class Sword : MonoBehaviour
     [SerializeField] private GameObject slashAnimPrefab;
     [SerializeField] private Transform slashAnimSpawnPoint;
     [SerializeField] private Transform weaponCollider;
+    [SerializeField] private float  swwordAttackCD = 0.5f;
 
 
     private PlayerControls playerControls;
     private Animator myAnimator;
     private PlayerController playerController;
     private ActiveWeapon activeWeapon;
+    private bool attcackButtonDown, isAttacking = false;
 
     private GameObject slashAnim;
+
     private void Awake()
     {
         playerController = GetComponentInParent<PlayerController>();
@@ -31,22 +34,44 @@ public class Sword : MonoBehaviour
 
     void Start()
     {
-        playerControls.Combat.Attack.started += _ => Attack();
+        playerControls.Combat.Attack.started += _ => StartAttacking();
+        playerControls.Combat.Attack.canceled += _ => StopAttacking();
     }
 
     private void Update()
     {
         MouseFollowWithOffset();
-
+        Attack();
     }
 
     private void Attack()
     {
-        myAnimator.SetTrigger("Attack");
-        weaponCollider.gameObject.SetActive(true);
+        if (attcackButtonDown && !isAttacking)
+        {
+            isAttacking = true;
+            myAnimator.SetTrigger("Attack");
+            weaponCollider.gameObject.SetActive(true);
+            slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
+            slashAnim.transform.parent = this.transform.parent;
+            StartCoroutine(AttackCDRoutine());
+        }
+    }
 
-        slashAnim = Instantiate(slashAnimPrefab, slashAnimSpawnPoint.position, Quaternion.identity);
-        slashAnim.transform.parent = this.transform.parent;
+    private IEnumerator AttackCDRoutine()
+    {
+        yield return new WaitForSeconds(swwordAttackCD);
+        isAttacking = false;
+    }
+
+
+    private void StartAttacking()
+    {
+        attcackButtonDown = true;
+    }
+
+    private void StopAttacking()
+    {
+        attcackButtonDown = false;  
     }
 
     public void DoneAttackingAnimEvent()
@@ -74,8 +99,6 @@ public class Sword : MonoBehaviour
             slashAnim.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
-
-
     private void MouseFollowWithOffset()
     {
         Vector3 mousePos = Input.mousePosition;
