@@ -10,7 +10,6 @@ public class Sword : MonoBehaviour
     [SerializeField] private Transform weaponCollider;
     [SerializeField] private float  swwordAttackCD = 0.5f;
 
-
     private PlayerControls playerControls;
     private Animator myAnimator;
     private PlayerController playerController;
