@@ -3,7 +3,8 @@ guid: bdcc456b5a2aa6041a045cedc3f23b36
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathVFXPrefab: {fileID: 5075538081771610990, guid: 84d650b0d8c1aea4f97820ac68c69b78, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

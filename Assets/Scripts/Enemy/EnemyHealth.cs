@@ -34,8 +34,9 @@ public class EnemyHealth : MonoBehaviour
 
     private IEnumerator CheckDetectDeathRoutine()
     {
-        yield return new WaitForSeconds(flash.GetRestoreMatime());
         DetectDeath();
+        yield return new WaitForSeconds(flash.GetRestoreMatime());
+        
     }
 
     public void DetectDeath()
