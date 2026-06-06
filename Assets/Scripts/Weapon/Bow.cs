@@ -9,4 +9,5 @@ public class Bow : MonoBehaviour,IWeapon
         Debug.Log("Bow Attack");
         ActiveWeapon.Instance.ToggleIsAttacking(false);
     }
+    
 }
