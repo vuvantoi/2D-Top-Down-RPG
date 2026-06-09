@@ -3968,6 +3968,7 @@ GameObject:
   - component: {fileID: 1328496603}
   - component: {fileID: 1328496602}
   - component: {fileID: 1328496601}
+  - component: {fileID: 1328496604}
   m_Layer: 0
   m_Name: Foreground
   m_TagString: Untagged
@@ -9660,6 +9661,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1328496604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328496597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d500b5a45229a34da3e68812336faf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1336539310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10585,7 +10598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6c957c6592cc1419367d7d9cc34d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
 --- !u!4 &1728276987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4478320317710979788, guid: 72f8a55cad217fe41920fd938c6349b7, type: 3}
