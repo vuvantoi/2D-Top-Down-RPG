@@ -7,8 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private float knockBackThrustAmount = 10f;
     [SerializeField] private float damageRecoveryTime = 1f;
+    [SerializeField]  private int currentHealth;
 
-    private int currentHealth;
     private bool canTakeDamage = true;
     private Knockback knockback;
     private Flash flash;
