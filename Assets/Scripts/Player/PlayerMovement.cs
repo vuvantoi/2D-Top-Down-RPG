@@ -49,18 +49,13 @@ public class PlayerMovement : MonoBehaviour
         if (knockback != null && knockback.GettingKnockedBack)
             return;
 
-        rb.MovePosition(
-            rb.position +
-            playerInput.Movement *
-            moveSpeed *
-            Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + playerInput.Movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void AdjustFacingDirection()
     {
         Vector3 mousePos = Input.mousePosition;
-        Vector3 playerScreenPoint =
-            Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
         facingLeft = mousePos.x < playerScreenPoint.x;
         spriteRenderer.flipX = facingLeft;

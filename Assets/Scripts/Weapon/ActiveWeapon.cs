@@ -9,7 +9,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     private PlayerControls playerControls;
     private float timeBetweenAttacks;
 
-    private bool attackButtonDown, isAttacking = false;
+    private bool attackButtonDown, gettingKnockedBack, isAttacking = false;
 
     protected override void Awake()
     {
@@ -41,6 +41,7 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
     private void Update()
     {
         Attack();
+        GettingKnockedBack();
     }
 
     public void NewWeapon(MonoBehaviour newWeapom)
@@ -96,10 +97,17 @@ public class ActiveWeapon : Singleton<ActiveWeapon>
 
     private void Attack()
     {
+        if (gettingKnockedBack) return;
+
         if (attackButtonDown && !isAttacking && CurrenActiveWeapon)
         {
             AttackCooldown();
             (CurrenActiveWeapon as IWeapon).Attack();
         }
+    }
+
+    private void GettingKnockedBack()
+    {
+        gettingKnockedBack = PlayerController.Instance.Knockback.GettingKnockedBack;
     }
 }

@@ -11535,6 +11535,7 @@ MonoBehaviour:
   maxHealth: 3
   knockBackThrustAmount: 10
   damageRecoveryTime: 1
+  currentHealth: 0
 --- !u!114 &1931284790
 MonoBehaviour:
   m_ObjectHideFlags: 0
